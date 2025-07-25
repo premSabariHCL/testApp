@@ -1,0 +1,40 @@
+
+<div class="container-fluid text-center mt-6">
+    <div class="row">
+        <div class="col mt-5">
+            <h3>Login Detail's</h3>
+        </div>
+    </div>
+    <form class="login-form">
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email or Phone No</mat-label>
+                    <button mat-icon-button matPrefix><i class="bi bi-envelope"></i></button>
+                    <input matInput type="email" placeholder="Enter the Email or PhoneNo" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <button mat-icon-button matPrefix><i class="bi bi-key"></i></button>
+                    <input matInput type="password" placeholder="Enter the Password" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-2 ms-0">
+                <mat-checkbox> Remember Me</mat-checkbox>
+            </div>
+            <div class="mb-3 cursor-pointer" [routerLink]='["/newUser"]'>Need for Create User One ?</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="reset" class="btn btn-outline-secondary btn-lg me-3">Reset</button>
+                <button type="submit" class="btn btn-outline-primary btn-lg">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
