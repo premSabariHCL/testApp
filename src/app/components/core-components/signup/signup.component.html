@@ -4,57 +4,90 @@
             <h3>New User Creation</h3>
         </div>
     </div>
-    <form class="login-form">
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="row">
-            <div class="col">
+            <div class="col-4">
                 <mat-form-field>
                     <mat-label>Enter a FirstName</mat-label>
                     <button mat-icon-button matPrefix><i class="bi bi-person"></i></button>
-                    <input matInput type="text" placeholder="Enter a First Name" />
+                    <input matInput type="text" formControlName="fname" placeholder="Enter a First Name" />
                 </mat-form-field>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <mat-form-field>
                     <mat-label>Enter a LastName</mat-label>
                     <button mat-icon-button matPrefix><i class="bi bi-person"></i></button>
-                    <input matInput type="text" placeholder="Enter a Last Name" />
+                    <input matInput type="text" formControlName="lname" placeholder="Enter a Last Name" />
                 </mat-form-field>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <mat-form-field>
                     <mat-label>Enter a Mobile No</mat-label>
                     <button mat-icon-button matPrefix><i class="bi bi-phone"></i></button>
-                    <input matInput type="tel" placeholder="Enter a Mobile No" />
+                    <input matInput type="tel" formControlName="mobileNo" placeholder="Enter a Mobile No" />
                 </mat-form-field>
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-4">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter a Email</mat-label>
                     <button mat-icon-button matPrefix><i class="bi bi-envelope"></i></button>
-                    <input matInput type="email" placeholder="Enter a Email" />
+                    <input matInput type="email" formControlName="emailId" placeholder="Enter a Email" />
                 </mat-form-field>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
                     <button mat-icon-button matPrefix><i class="bi bi-key"></i></button>
-                    <input matInput type="password" placeholder="Enter the Password" />
+                    <input matInput type="password" formControlName="password" placeholder="Enter the Password" />
                 </mat-form-field>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
                     <button mat-icon-button matPrefix><i class="bi bi-key"></i></button>
-                    <input matInput type="password" placeholder="Enter the Password" />
+                    <input matInput type="password" formControlName="cpassword" placeholder="Enter the Password" />
                 </mat-form-field>
             </div>
         </div>
         <div class="row">
-            <div class="col">State</div>
-            <div class="col">Country</div>
-            <div class="col">City</div>
+            <div class="col-4">
+                <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <button mat-icon-button matPrefix><i class="bi bi-map"></i></button>
+                    <mat-select formControlName="country" (selectionChange)="onCountryChange($event)">
+                        <mat-option *ngFor="let country of countryData" [value]="country.name">{{ country.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field>
+                    <mat-label>State</mat-label>
+                    <button mat-icon-button matPrefix><i class="bi bi-map"></i></button>
+                    <mat-select formControlName="state" (selectionChange)="onStateChange($event)">
+                        <mat-option *ngFor="let state of stateData" [value]="state.name">{{ state.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <button mat-icon-button matPrefix><i class="bi bi-map"></i></button>
+                    <mat-select formControlName="city">
+                        <mat-option *ngFor="let cities of cityData" [value]="cities">{{ cities }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="reset" class="btn btn-outline-secondary btn-lg me-3">Reset</button>
+                <button type="submit" class="btn btn-outline-primary btn-lg">Save</button>
+            </div>
+        </div>
+        <div class="text-center me-3">
+            Already have an account ? <a routerLink="/login">Login</a> here.
         </div>
     </form>
 </div>

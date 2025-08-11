@@ -1,1 +1,54 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div class="col">
+            <ul class="custom-list-left">
+                <li>
+                     <button mat-icon-button matPrefix><i class="bi bi-list"></i></button>
+                </li>
+            </ul>
+        </div>
+        <div class="col"></div>
+        <div class="col">
+            <ul class="custom-list-right">
+                <li>
+                    <button mat-icon-button matPrefix [matMenuTriggerFor]="appMenu"><i class="bi bi-grid"></i></button>
+                    <mat-menu #appMenu="matMenu">
+                        <ul *ngFor="let app of appMenuList">
+                            <li>{{ app.name }}</li>
+                        </ul>
+                    </mat-menu>
+                </li>
+                <li>
+                    <button mat-icon-button matPrefix [matMenuTriggerFor]="userMenu"><i class="bi bi-person"></i></button>
+                    <mat-menu #userMenu="matMenu">
+                        <div>
+                            <span>Welcome, </span>
+                        </div>
+                        <ul *ngFor="let people of personMenuList">
+                            <li>{{ people.name }}</li>
+                        </ul>
+                        <div>
+                            <button mat-raised-button color="secondary" [routerLink]="['/login']" style="float: inline-end;">Logout</button>
+                        </div>
+                    </mat-menu>
+                </li>
+                <li>
+                    <button mat-icon-button matPrefix [matMenuTriggerFor]="helpMenu"><i class="bi bi-question-circle"></i></button>
+                    <mat-menu #helpMenu="matMenu">
+                        <ul *ngFor="let help of helpMenuList">
+                            <li>{{ help.name }}</li>
+                        </ul>
+                    </mat-menu>
+                </li>
+                <li>
+                    <button mat-icon-button matPrefix [matMenuTriggerFor]="powerMenu"><i class="bi bi-power"></i></button>
+                    <mat-menu #powerMenu="matMenu">
+                        <ul *ngFor="let power of powerMenuList" [routerLink]="['/login']">
+                            <li>{{ power.name }}</li>
+                        </ul>
+                    </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

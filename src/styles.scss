@@ -2,10 +2,48 @@
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+a {
+    text-decoration: none !important;
+}
+
+ol, ul, li {
+    list-style-type: none;
+    display: flex;
+}
+.custom-list-left {
+    padding: 5px 5px;
+    margin: 2px 2px;
+}
+.custom-list-right{
+    float: inline-end;
+    padding: 5px 5px;
+    margin: 2px 2px;
+}
+.custom-card {
+    position: absolute !important;
+    top: 70px;
+    bottom: 70px;
+    left: 10px;
+    right: 10px;
+    border-radius: 10px !important;
+    overflow: scroll !important;
+}
 .login-form {
     background: bisque;
     margin: 6% 35%;
     padding: 20px 10px;
     border-radius: 15px;
 }
+.signup-form {
+    background-color: bisque;
+    margin: 6% 5%;
+    padding: 15px 15px;
+    border-radius: 15px;
+}
 .cursor-pointer { cursor: pointer;}
+.custom-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
