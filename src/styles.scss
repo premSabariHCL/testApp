@@ -28,6 +28,13 @@ ol, ul, li {
     border-radius: 10px !important;
     overflow: scroll !important;
 }
+.custom-list {
+    overflow-y: scroll;
+    height: 645px;
+    margin: 5px 5px;
+    padding: 5px 5px;
+    border-right: 2px solid #000;
+}
 .login-form {
     background: bisque;
     margin: 6% 35%;

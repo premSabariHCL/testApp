@@ -9,6 +9,11 @@ export class CommonService {
   constructor(private http: HttpClient) { }
   private apiUrl = 'https://dummyjson.com';
   private baseUrl = 'https://countriesnow.space/api/v0.1';
+  private localApiUrl = 'http://localhost:3001/api/v1';
+
+  gteTestAPI() {
+    return this.http.get(`${this.localApiUrl}/test`);
+  }
 
   getCountryAPI() {
     return this.http.get(`${this.baseUrl}/countries/positions`);
@@ -24,5 +29,15 @@ export class CommonService {
 
   getProductAPI() {
     return this.http.get(`${this.apiUrl}/products`);
+  }
+  getUserAPI() {
+    return this.http.get(`${this.apiUrl}/users`);
+  }
+  getRolebasedUser(role: any) {
+    return this.http.get(`${this.apiUrl}/users?role=${role}`);
+  }
+
+  getTODOAPI() {
+    return this.http.get(`${this.apiUrl}/todos`);
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +28,9 @@ import { SidebarComponent } from './components/common/sidebar/sidebar.component'
 import { LoginComponent } from './components/core-components/login/login.component';
 import { DashboardComponent } from './components/core-components/dashboard/dashboard.component';
 import { SignupComponent } from './components/core-components/signup/signup.component';
+import { UserComponent } from './components/core-components/user/user.component';
+import { AdminComponent } from './components/core-components/admin/admin.component';
+import { TokenInterceptor } from './components/shared/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { SignupComponent } from './components/core-components/signup/signup.comp
     SidebarComponent,
     LoginComponent,
     DashboardComponent,
-    SignupComponent
+    SignupComponent,
+    UserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,9 @@ import { SignupComponent } from './components/core-components/signup/signup.comp
     MatListModule, MatMenuModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatTableModule, MatTabsModule, MatToolbarModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

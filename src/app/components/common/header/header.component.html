@@ -13,7 +13,7 @@
                 <li>
                     <button mat-icon-button matPrefix [matMenuTriggerFor]="appMenu"><i class="bi bi-grid"></i></button>
                     <mat-menu #appMenu="matMenu">
-                        <ul *ngFor="let app of appMenuList">
+                        <ul *ngFor="let app of appMenuList" (click)="handleURL(app.url)">
                             <li>{{ app.name }}</li>
                         </ul>
                     </mat-menu>

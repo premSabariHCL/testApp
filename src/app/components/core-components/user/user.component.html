@@ -1,0 +1,41 @@
+<app-header></app-header>
+<mat-card class="custom-card">
+    <div class="row">
+        <div class="col-3">
+            <mat-select class="custom-select" [value]="selectedRole" (selectionChange)="handleRoleEvent($event)">
+                <mat-option *ngFor="let item of userRoleList" [value]="item.role">{{item.role}}</mat-option>
+            </mat-select>
+            <mat-list class="custom-list">
+                <mat-list-item style="border-bottom: 1px solid #000;" *ngFor="let user of userDataList" [class.selected]="user === selectedRole" (click)="selectUser(user)">
+                        <mat-icon style="border: 1px solid #000;height: 35px; width: 34px;" mat-card-avatar matListItemIcon>
+                            <img src="{{ user.image }}" alt="Logo" style="height: 24px; width: 24px; justify-content: center; align-items: center; display: flex; margin: 5px auto;" />
+                        </mat-icon>
+                        <span matListItemTitle>{{ user.firstName }}</span>
+                        <span matListItemSubtitle>{{ user.lastName }}</span>
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div class="col-9" style="overflow-y: scroll; height: 640px;">
+            <mat-list class="custom-list" *ngIf="selectedUser">
+                <h2>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</h2>
+                <p><strong>Age:</strong> {{ selectedUser.age}}</p>
+                <p><strong>Gender:</strong> {{ selectedUser.gender }}</p>
+                <p><strong>Birth Date:</strong> {{ selectedUser.birthDate | date : 'dd-MMM-yyyy'}}</p>
+                <p><strong>Blood Group:</strong> {{ selectedUser.bloodGroup }}ve</p>
+                <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+                <p><strong>Username:</strong> {{ selectedUser.username }}</p>
+                <p><strong>Role:</strong> {{ selectedUser.role }}</p>
+                <p><strong>Phone:</strong> {{ selectedUser.phone }}</p>
+                <p><strong>Address:</strong> {{ selectedUser.address.address }} , {{ selectedUser.address.city }} , {{ selectedUser.address.state }} , {{ selectedUser.address.country }} , {{ selectedUser.address.postalCode }}</p>
+                <p><strong>Company:</strong> {{ selectedUser.company.department }} , {{ selectedUser.company.name }} , {{ selectedUser.company.title }}
+                   <strong>Address:</strong> {{ selectedUser.company.address.address }} , {{ selectedUser.company.address.city }} , {{ selectedUser.company.address.state }} , {{ selectedUser.company.address.country }} , {{ selectedUser.company.address.postalCode }}
+                </p>
+                <p><strong>Mac Address:</strong> {{ selectedUser.macAddress }}</p>
+                <p><strong>Height:</strong> {{ selectedUser.height }} cm</p>
+                <p><strong>Weight:</strong> {{ selectedUser.weight }} kg</p>
+                <p><strong>Eye Color:</strong> {{ selectedUser.eyeColor }}</p>
+            </mat-list>
+        </div>
+    </div>
+</mat-card>
+<app-footer class="custom-footer"></app-footer>

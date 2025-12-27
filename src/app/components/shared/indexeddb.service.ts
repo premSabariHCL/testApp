@@ -71,16 +71,13 @@ export class IndexeddbService {
       const request = store.openCursor();
 
       request.onsuccess = (event) => {
-        console.log(event);
         const cursor = (event.target as IDBRequest).result;
         if(cursor) {
           if ((cursor.value.emailId === emailId) || (cursor.value.password === password)) {
-            console.log(cursor.key, cursor.value);
             resolve(cursor.value);
             cursor.continue();
             return;
           }
-          // cursor.continue();
         } else (
           resolve(null)
         )

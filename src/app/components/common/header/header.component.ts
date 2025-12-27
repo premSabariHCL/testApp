@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   appMenuList = [
-    { "name": "Home" },
-    { "name": "Product" },
-    { "name": "Report" },
-    { "name": "Result" },
-    { "name": "Administration" },
-    { "name": "Setting" }
+    { "name": "Home", "url": "/lobby" },
+    { "name": "Product", "url": "/product" },
+    { "name": "Report", "url": "/report" },
+    { "name": "Result", "url": "/result" },
+    { "name": "Administration", "url": "/admin" },
+    { "name": "User Management", "url": "/user" },
+    { "name": "Setting", "url": "/setting" }
   ];
   personMenuList = [
     { "name": "My Account" },
@@ -32,7 +34,22 @@ export class HeaderComponent implements OnInit {
     { "name": "Shutdown" }
   ];
 
-  constructor() {}
+  constructor(private routes: Router) {}
   ngOnInit(): void {}
+
+  handleURL(url: any) {
+    console.log("URL: ", url);
+    switch(url) {
+      case '/lobby':
+        this.routes.navigateByUrl('/lobby');
+        break;
+      case '/admin':
+        this.routes.navigateByUrl('/admin');
+        break;
+      case '/user':
+        this.routes.navigateByUrl('/user');
+        break;
+    }
+  }
 
 }

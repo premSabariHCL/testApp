@@ -3,8 +3,8 @@
     <mat-card class="custom-card">
         <table mat-table  [dataSource]="data" multiTemplateDataRows class="mat-elevation-z0">
             <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-                    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-                    <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+                    <th mat-header-cell style="border-right: 2px solid #FFF;" *matHeaderCellDef>{{ column }}</th>
+                    <td mat-cell style="border-right: 1px solid #000;" *matCellDef="let element">{{ element[column] }}</td>
             </ng-container>
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
@@ -14,7 +14,7 @@
                         <i *ngIf="expandElement === element" class="bi bi-chevron-up"></i>
                     </button>
                     <button mat-icon-button (click)="onEditEvent(element.id)">
-                        <i class="bi bi-pencil"></i>
+                        <i class="bi bi-pencil-square"></i>
                     </button>
                     <button mat-icon-button (click)="onDeleteEvent(element.id)">
                         <i class="bi bi-trash3"></i>
@@ -34,7 +34,9 @@
                              Stock : {{ element.stock }} &nbsp;
                              Price : {{ element.price }}
                              Minimum Order Quantity : {{ element.minimumOrderQuantity }}  &nbsp;
-                             Weight : {{ element.weight }}
+                             Weight : {{ element.weight }} <br />
+                             Update At : {{ element.meta.updatedAt | date }} &nbsp;
+                             Created At : {{ element.meta.createdAt | date }} &nbsp;
                         </div>
                         <div class="example-element-description">
                         {{element.description}}
@@ -43,9 +45,9 @@
                     </div>
                 </td>
             </ng-container>
-            <tr mat-header-row style="font-weight: bold; font-size: 16px; text-transform: capitalize; background-color: #00F; color: #FFF;" *matHeaderRowDef="columnsToWithExpandDisplay"></tr>
-            <tr mat-row style="text-transform: capitalize;" [class.example-expanded-row]="expandElement === element" *matRowDef="let element; columns: columnsToWithExpandDisplay;" (click)="expandElement = (expandElement === element) ? null : element"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['expandDetail']"></tr>
+            <tr mat-header-row style="position: sticky; top: 0; z-index: 999; font-weight: bold; font-size: 16px; text-transform: capitalize; background-color: #00F; color: #FFF;" *matHeaderRowDef="columnsToWithExpandDisplay"></tr>
+            <tr mat-row style="text-transform: capitalize;" class="example-element-row" [class.example-expanded-row]="expandElement === element" *matRowDef="let element; columns: columnsToWithExpandDisplay;" (click)="expandElement = (expandElement === element) ? null : element"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandDetail']" class="example-detail-row"></tr>
         </table>
     </mat-card>
 </div>
